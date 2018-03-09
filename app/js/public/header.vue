@@ -1,9 +1,13 @@
 <template lang="html">
-  <div :class="$style.header">
-    <span :class="$style.left">
-      <em>注册</em>&nbsp;|&nbsp;<em>登录</em>
-    </span>
-    <btn :class="$style.btnDownload">APP下载</btn>
+  <div>
+    <div :class="$style.header">
+      <span :class="$style.left">
+        <em>注册</em>&nbsp;|&nbsp;<em>登录</em>
+      </span>
+      <btn :class="$style.btnDownload">APP下载</btn>
+    </div>
+    <div :class="$style.headerSpace">
+    </div>
   </div>
 </template>
 
@@ -46,5 +50,8 @@
       border-radius: 4px;
       margin: 28px 24px 0 0;
     }
+  }
+  .header-space{
+    height: 100px;
   }
 </style>
