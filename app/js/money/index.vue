@@ -5,7 +5,9 @@
       <Ada/>
       <Money/>
       <Adb/>
-      <Footor/>
+      <Finance/>
+      <Adc/>
+      <Footor cname="mfooter"/>
       <Navbar/>
     </div>
 </template>
@@ -18,6 +20,8 @@ import Slider from "./mslider.vue"
 import Ada from "./ada.vue"
 import Money from "./money.vue"
 import Adb from "./adb.vue"
+import Finance from "./finance.vue"
+import Adc from "./adc.vue"
 export default {
   components: {
     Heador,
@@ -27,6 +31,19 @@ export default {
     Ada,
     Money,
     Adb,
+    Finance,
+    Adc,
   },
 }
 </script>
+
+<style lang="scss">
+.mfooter{
+  margin-top: 0!important;
+  ul{
+    li:first-child{
+      display: none;
+    }
+  }
+}
+</style>
