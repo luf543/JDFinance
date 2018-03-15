@@ -2,6 +2,7 @@
     <div>
       <Heador/>
       <Slider/>
+      <Daily/>
       <Footor cname="mfooter"/>
       <Navbar/>
     </div>
@@ -12,12 +13,14 @@ import Heador from "../public/header.vue"
 import Footor from "../public/footer.vue"
 import Navbar from "../public/navbar.vue"
 import Slider from "./rslider.vue"
+import Daily from "./daily.vue"
 export default {
   components: {
     Heador,
     Footor,
     Navbar,
     Slider,
+    Daily,
   },
 }
 </script>
