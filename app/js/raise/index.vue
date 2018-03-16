@@ -3,6 +3,8 @@
       <Heador/>
       <Slider/>
       <Daily/>
+      <In/>
+      <More/>
       <Footor cname="mfooter"/>
       <Navbar/>
     </div>
@@ -14,6 +16,8 @@ import Footor from "../public/footer.vue"
 import Navbar from "../public/navbar.vue"
 import Slider from "./rslider.vue"
 import Daily from "./daily.vue"
+import In from "./in.vue"
+import More from "./more.vue"
 export default {
   components: {
     Heador,
@@ -21,6 +25,8 @@ export default {
     Navbar,
     Slider,
     Daily,
+    In,
+    More,
   },
 }
 </script>

@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); //js压缩
 module.exports = env => {
   if (!env) {
     env = {}
@@ -11,7 +12,7 @@ module.exports = env => {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({template: './app/views/index.html'}),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ];
   if(env.production){
     plugins.push(
@@ -20,10 +21,14 @@ module.exports = env => {
           NODE_ENV: '"production"'
         }
       }),
-      new ExtractTextPlugin("style.css", {ignoreOrder: true})
+      new ExtractTextPlugin("style.css", {ignoreOrder: true}),
+      new UglifyJsPlugin({
+        sourceMap: true
+      })
     )
   }
   return {
+    devtool: 'source-map',
     entry: ['./app/js/viewport.js','./app/js/main.js'],
     devServer: {
       contentBase: './dist',
@@ -48,8 +53,8 @@ module.exports = env => {
             },
             extractCSS: true,
             loaders: env.production?{
-              css: ExtractTextPlugin.extract({use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8', fallback: 'vue-style-loader'}),
-              scss: ExtractTextPlugin.extract({use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader', fallback: 'vue-style-loader'})
+              css: ExtractTextPlugin.extract({use: 'css-loader?minimize!px2rem-loader?remUnit=40&remPrecision=8', fallback: 'vue-style-loader'}),
+              scss: ExtractTextPlugin.extract({use: 'css-loader?minimize!px2rem-loader?remUnit=40&remPrecision=8!sass-loader', fallback: 'vue-style-loader'})
             }:{
               css: 'vue-style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8',
               scss: 'vue-style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader'
